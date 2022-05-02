@@ -1,0 +1,7 @@
+{
+	"name": "Tauschfarm",
+	"integrations": {
+		"capacitor": {}
+	},
+	"type": "react"
+}

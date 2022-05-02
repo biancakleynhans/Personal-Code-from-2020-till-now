@@ -1,0 +1,64 @@
+{
+  "Inventory": {
+    "Accesories": {
+      "Bracelet": {
+        "products": {
+          "-MyllMDlIIzRo5nzAzCC": {
+            "brand": "Skeleton in the closet",
+            "category": "Accesories",
+            "color": "Silver",
+            "desc": " Love Engraved Bracelet ",
+            "discountPercentage": 0,
+            "id": "-MyllMDlIIzRo5nzAzCC",
+            "images": [
+              "https://firebasestorage.googleapis.com/v0/b/skeleton-in-the-closet.appspot.com/o/WhatsApp%20Image%202022-03-21%20at%206.57.05%20PM%20(1).jpeg?alt=media&token=b5f39734-ada4-43e1-ac87-33ec1898ff55"
+            ],
+            "price": 30,
+            "rating": 5,
+            "size": "One size fits all",
+            "stock": 1,
+            "subcategory": "Bracelet",
+            "title": " Love Engraved Bracelet "
+          },
+          "-MyllMDumCtZvOAsiexg": {
+            "brand": "Skeleton in the closet",
+            "category": "Accesories",
+            "color": "Silver",
+            "desc": " Plain Silver Bracelet ",
+            "discountPercentage": 0,
+            "id": "-MyllMDumCtZvOAsiexg",
+            "images": [
+              "https://firebasestorage.googleapis.com/v0/b/skeleton-in-the-closet.appspot.com/o/WhatsApp%20Image%202022-03-21%20at%206.57.05%20PM.jpeg?alt=media&token=8d2d982a-7a04-4898-9653-52fc911e360f"
+            ],
+            "price": 30,
+            "rating": 5,
+            "size": "One size fits all",
+            "stock": 1,
+            "subcategory": "Bracelet",
+            "title": " Plain Silver Bracelet "
+          }
+        }
+      },
+      "Chokers": { "products": {} },
+      "Necklaces": { "products": {} },
+      "Hair Accesories": { "products": {} },
+      "Rings": { "products": {} },
+      "Earrings": { "products": {} },
+      "Belts": { "products": {} },
+      "Piercings": { "products": {} },
+      "Thigh garters": { "products": {} }
+    },
+    "Bags": {
+      "Tote": { "products": {} },
+      "Backpack": { "products": {} },
+      "Makeup": { "products": {} }
+    },
+    "Home Decor": {
+      "Print": { "products": {} },
+      "Canvas": { "products": {} },
+      "Mat": { "products": {} },
+      "Tapestry": { "products": {} }
+    },
+    "Combo": { "Combo": { "products": {} } }
+  }
+}

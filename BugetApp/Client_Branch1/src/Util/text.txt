@@ -1,0 +1,936 @@
+// Represents a search trough an array.
+// @function search
+// @param {Array} array - The array you wanna search trough
+// @param {string} key - The key to search for
+// @param {string} [prop] - The property name to find it in
+
+function searchArrayForDesc(array, key, prop){
+  // Optional, but fallback to key['name'] if not selected
+  prop = (typeof prop === 'undefined') ? 'name' : prop;    
+
+  for (var i=0; i < array.length; i++) {
+      if (array[i][prop] === key) {
+        console.log("array[i]",array[i])
+        return array[i];
+      }
+      else return undefined;
+  }
+}
+
+
+
+
+
+
+
+this.SendDescArray = Object.assign(this.DescArray)
+    this.callbackFromChild = this.callbackFromChild.bind(this)
+
+
+  callbackFromChild =(info)=>{
+    console.log("info", info)
+    return () => {
+      this.setState({
+        desc: this.DescArray
+      });
+      console.log("state Now???", this.state)
+   }
+
+
+   
+function flatten(data) {
+  var result = {};
+  function recurse (cur, prop) {
+      if (Object(cur) !== cur) {
+          result[prop] = cur;
+      } else if (Array.isArray(cur)) {
+           for(var i=0, l=cur.length; i<l; i++)
+               recurse(cur[i], prop + "[" + i + "]");
+          if (l == 0)
+              result[prop] = [];
+      } else {
+          var isEmpty = true;
+          for (var p in cur) {
+              isEmpty = false;
+              recurse(cur[p], prop ? prop+"."+p : p);
+          }
+          if (isEmpty && prop)
+              result[prop] = {};
+      }
+  }
+  recurse(data, "");
+  console.log("result Flatten", result)
+  return result;
+}
+const popDesc=(d:NamedDictionary<iDescChangeArr>, OLDt: string, NEWt: string, index:number)=>{
+  if(!d[index])
+  {
+    d[index]={ oldDesc: '', newDesc:''} as iDescChangeArr;
+  }
+ let colinfo= ( d[index]);
+ colinfo.oldDesc = OLDt
+ colinfo.newDesc = NEWt
+}
+
+     
+    // this.DescArray.forEach((name, index) => {
+    //   // console.log("name", name, "index", index)
+    //   popDesc(this.descChangeArr,this.DescArray[index],dataFromChild[0].vehicles[index],index)
+    //   // console.log("Inside => this.descChangeArr", this.descChangeArr)
+    //   return this.descChangeArr
+    // });
+    // // console.log("Outside => this.descChangeArr", this.descChangeArr)
+    // renameListDesc(this.DataArrayRecieved, this.descChangeArr)
+    
+      
+      for (let index = 0; index < this.DescArray.length; index++) {
+        // console.log("index", index, this.DescArray[index])
+        // console.log("index", index, childResponse[index])
+
+        x  = searchArrayForDesc(this.DataArrayRecieved, this.DescArray[index], "Description")
+        if(x !== undefined){
+          console.log( "IF x: ",x,"x.Description",x.Description)
+          console.log("this.DataArrayRecieved[index]", this.DataArrayRecieved[index])
+          console.log("DescArray Description",this.DescArray[index], "childResponse Description", childResponse[index])
+
+          if(x.Description === this.DescArray[index])
+          {
+            console.log("Matches old string can be replaced with new one")
+            x.Description = childResponse[index]
+            console.log("did it work ??", x)
+            return x 
+          }
+        
+        }
+        
+      }
+function flattenObj(obj, parent, res = {}){
+  for(let key in obj){
+      let propName = parent ? key +" " : key;
+      if(typeof obj[key] == 'object'){
+          flattenObj(obj[key], propName, res);
+      } else {
+          res[propName] = obj[key];
+      }
+  }
+  console.log("res? : ", res)
+  return res;
+}
+
+function flatten2(obj: any) {
+  return Object.keys(obj).reduce((acc, current) => {
+    const key = `${current}`;
+    const currentValue = obj[current];
+    if (Array.isArray(currentValue) || Object(currentValue) === currentValue) {
+      Object.assign(acc, flatten(currentValue));
+    } else {
+      acc[key] = currentValue;
+    }
+    console.log("acc", acc)
+    return acc;
+  }, {});
+};
+
+
+
+
+
+
+    // for (let i = 0; i < this.DescArray.length; i++) {
+    //   // console.log(this.DescArray[i], dataFromChild[0].vehicles[i]);
+    //   popDesc(this.descChangeArr,this.DescArray[i],dataFromChild[0].vehicles[i],i)
+    //   console.log("this.descChangeArr", this.descChangeArr)
+    // }
+    
+this.DescArray.forEach((l, index)=> {
+      console.log("index",index , "line", l)
+      
+      // popDesc(this.descChangeArr,l,index)
+      // console.log("descChangeArr: ",this.descChangeArr)
+    });
+
+
+
+
+
+// import { FormikProps, withFormik } from "formik";
+// import * as Yup from "yup";
+// import { iExpense } from '../Models/interfaces';
+
+// export interface OtherFormProps {
+//     buttonText?:string;
+// }
+
+// export interface FormProps_iExpense {
+//     PostingDate: string,
+//     TransactionDate: string,
+//     Description: string,
+//     MoneyIn: string ,
+//     MoneyOut: string,
+//     Balance:  string,
+//     Planned?: boolean,
+//     RecurringExpence?: boolean,
+// }
+
+
+// export const InnerFormUserDesc = (props: OtherFormProps & FormikProps<iExpense>) => {
+//     const {
+//          values,
+//          errors,
+//          touched,
+//          handleChange,
+//          handleBlur,
+//          handleSubmit,
+//          isSubmitting,
+//          buttonText= 'Done'
+//      } = props
+     
+//      function CustomhandleChange(e:any) {      
+//          console.log('Select onChange',e);
+//          values.Description = e;
+//          handleChange(e)
+//          handleBlur(e)
+//      }
+       
+//      return (
+//          <div className="form-style">
+//              <form onSubmit={handleSubmit}>
+//              <label>{values.Description}</label>
+//              <div >
+//                  <input
+//                  width={50}
+//                  type="text"
+//                  name="Description"
+//                  onChange={handleChange}
+//                  onBlur={handleBlur}
+//                  value={props.values.Description}
+//                  />
+//              </div>
+//              {errors.Description && <div>{errors.Description}</div>}
+             
+//              <button
+//                  type="submit"
+//                  disabled={isSubmitting ||!!(errors.Description && touched.Description)}
+//             >
+//                  {buttonText}</button>
+//              </form>
+//          </div> 
+//      );
+    
+// }
+
+// export const UserDescChange = withFormik<FormProps_iExpense, iExpense>({
+//     mapPropsToValues: props => ({
+//         PostingDate: props.PostingDate || '',
+//         TransactionDate: props.TransactionDate || '',
+//         Description: props.Description || '',
+//         MoneyIn: props.MoneyIn || '' ,
+//         MoneyOut: props.MoneyOut || '',
+//         Balance:  props.Balance || '',
+
+//     }),
+//     validationSchema: Yup.object().shape({
+//         Description: Yup.string().required("Name is required").max(16, 'Please input 16 characters or less').min(2, 'Too Short!'),
+//     }),
+//     handleSubmit({ PostingDate, TransactionDate, Description, MoneyIn, MoneyOut, Balance}: iExpense,{ setSubmitting, resetForm }) {
+//       console.log( PostingDate, TransactionDate, Description, MoneyIn, MoneyOut, Balance, "FormValues");
+
+//       setSubmitting(false)
+//       resetForm(undefined)
+//     }
+// })(InnerFormUserDesc);
+
+
+
+
+// function LoadOrEdit(data){
+//     console.log('data',data)
+//     const trigger = data;
+//     if (trigger !== undefined) {
+//       return <LoggedInUser />;
+//     }
+//   return <LoggedOutUser />;
+// }
+
+
+       
+        <UserDescChange {...this.state.desc}/>
+        {/* <form>
+          <p>Old Description: {this.oldString} </p>
+          <br/>
+          <input type="text" 
+                 name="desc"   
+                 value={this.state.desc.Description} 
+                 onChange={this.changeHandler} 
+          />
+          <br/>
+          <p>New Description: {this.state.desc.Description}</p>
+        </form> */}
+        
+  // changeHandler = event => {
+  //   console.log("event.target.value", event.target.value)
+  //   this.setState({
+  //     desc: {
+  //       PostingDate: this.state.desc.PostingDate,
+  //       TransactionDate:this.state.desc.TransactionDate,
+  //       Description: event.target.value,
+  //       MoneyIn: this.state.desc.MoneyIn,
+  //       MoneyOut: this.state.desc.MoneyOut,
+  //       Balance: this.state.desc.Balance
+  //     }
+  //   });
+
+  // }
+
+
+
+
+
+
+
+
+ function StructureMakerFromY(rowsFull, RowArray){
+  var row1 = Object.assign([],rowsFull)
+    // console.log('rows1',row1);
+    
+    row1.forEach((entry)=>{
+      // console.log('entry',entry);
+      RowArray.push(entry)
+      return RowArray
+    })
+    //console.log('RowArray Length: ',RowArray.length);
+    //console.log('RowArray: ',RowArray);
+
+    RowArray.map((point)=> {
+      //console.log('point: ','y', point.yPos,'x',  point.xPoints,'text String: ', point.texts);
+    })
+    
+
+}
+
+function StructureMakerFromX(Col, ColArray){
+  var col = Object.assign([],Col)
+    // console.log('rows1',row1);
+    
+    col.forEach((entry)=>{
+      // console.log('entry',entry);
+      ColArray.push(entry)
+      return ColArray
+    })
+    //console.log('RowArray Length: ',RowArray.length);
+    //console.log('RowArray: ',ColArray);
+
+    ColArray.map((point)=> {
+      //console.log('point: ','y', point.yPoints,'x',  point.xPos,'text String: ', point.texts);
+    })
+    
+
+}
+
+
+
+
+
+
+    //console.log('RowArray Length: ',RowArray.length);
+    //console.log('RowArray: ',RowArray);
+
+    // ArrayFromData.map((point)=> {
+    //   //console.log('point: ','y', point.yPos,'x',  point.xPoints,'text String: ', point.texts);
+    // })
+
+
+
+    // StructureMakerFromY(rowsFull, ArrayFromData)
+    //StructureMakerFromX(colsRight, ArrayFromData)
+    
+    // var pageTextArray =[]
+    // //var pageTextOrderdedArray =[]
+    // var PageTextString = ""
+    // //var arrayStrings = []
+
+    
+    // textItems.forEach((el)=>{
+    //   console.log(el, "el" )
+    //   pageTextArray.push(el.str);
+    //   console.log(pageTextArray,"pageTextArray" )
+    //   PageTextString = pageTextArray.toString()
+    //   // console.log(PageTextString,"PageTextString" )
+    // })
+
+    // sortPageTextToArray(PageTextString)
+
+
+
+
+    
+          var data = pdfjs.getDocument(fileReader.result)
+          //console.log(fileReader.result, "fileReader.result");
+          var numPages
+
+          data.promise.then(function(pdf:any) {
+            numPages = pdf.numPages;
+            console.log('Number of Pages: ' + numPages);
+            pdf.getPage(1).then((pdfpage)=> {
+            
+              //console.log(pdfpage, "pdfpage")
+              pdfpage.getTextContent().then((textContent)=> {
+                //console.log(textContent , "bidiTexts ")
+
+                var textItems = textContent.items;
+                var pagetext =[]
+                var orderdedArr =[]
+                //console.log(textItems, "textContent Items")
+
+                textItems.forEach((el)=>{
+                  //console.log( el,"textItems")
+                  pagetext.push( { 'x': el.transform[4], 'y': el.transform[5], 'str': el.str } )
+                  //console.log(pagetext, "pagetext")
+
+                  // be careful :)
+                  // resort order by opposite Y and then X coordinates
+                  orderdedArr = _.orderBy(pagetext, ['y','x'], ['desc', 'asc'] )
+                  //console.log( "# it is correct # pagetext = ", orderdedArr );
+                  
+                  var arrayStrings = []
+                  var PageTextString
+
+                  orderdedArr.forEach(element => {
+                    //console.log(element, "element" )
+                    arrayStrings.push(element.str);
+                    // console.log(arrayStrings,"arrayStrings" )
+
+                    PageTextString = arrayStrings.toString()
+                    console.log(PageTextString,"string" )
+                    
+                    // sort data to only retain the 6 things needed 
+                  });
+                })
+              })
+            })  
+          })
+
+
+
+
+
+
+          
+
+      ///BELOW IS REDUNDENT
+      
+      // console.log(el.transform[5],"el.y",el.str)
+      
+      // pageTextArray.push( { 'x': el.transform[4], 'y': el.transform[5], 'str': el.str } )
+      //console.log(pageTextArray, "pagetext")
+
+      // be careful :)
+      // resort order by opposite Y and then X coordinates
+      //pageTextOrderdedArray = _.orderBy(pageTextArray, ['y','x'], ['desc', 'asc'] )
+      //console.log( "# it is correct # pagetext = ", pageTextOrderdedArray );
+      
+      // var arrayStrings = []
+      
+
+      // pageTextArray.forEach(element => {
+        //console.log(element, "element" )
+        // arrayStrings.push(element.str);
+        //console.log(arrayStrings,"arrayStrings" )
+
+        // PageTextString = arrayStrings.toString()
+        //console.log(PageTextString,"string" )
+        // return PageTextString
+      // })
+
+
+
+
+
+    
+function sortPageTextToArray(pagetextString){
+  console.log(pagetextString, "pagetextString")
+}
+
+function tryMe(page){
+  page.getTextContent().then( function(textContent){
+    if( null !== textContent.bidiTexts ){
+      console.log(textContent.items, "textContent.items")
+      var page_text = "";
+      var last_block = null;
+      for( var k = 0; k < textContent.items.length; k++ ){
+          var block = textContent.items[k];
+
+          if( last_block !== null && last_block.str[last_block.str.length-1] !== ' '){
+              if( block.x < last_block.x )
+                  page_text += "\r\n"; 
+              else if ( last_block.y != block.y && ( last_block.str.match(/^(\s?[a-zA-Z])$|^(.+\s[a-zA-Z])$/) == null ))
+                  page_text += ' ';
+          }
+          page_text += block.str;
+          last_block = block;
+          console.log(last_block, "last_block")
+      }
+          
+    }
+  })
+
+}
+
+
+
+
+ // this.BreakdownViewOfData(this.names[0], this.Data)
+    // this.BreakdownViewOfData(this.names[1], this.Data)
+    // this.BreakdownViewOfData(this.names[2], this.Data)
+    // this.BreakdownViewOfData(this.names[3], this.Data)
+    // this.BreakdownViewOfData(this.names[4], this.Data)
+    // this.BreakdownViewOfData(this.names[5], this.Data)
+    // this.BreakdownViewOfData(this.names[6], this.Data)
+
+    // for (let i = 0; i <=  namesArray.length; i++) {
+            
+    //     const name = namesArray[i]
+    //     console.log(name, "name???")
+
+    //     var entry = data.filter(ent => ent.Description === name)
+    //     console.log(entry, "entry???")
+
+
+    //     // MONEY IN
+    //     // creates an array of the `number` property: [100, 22, 12]
+    //     var numbersIn = entry.map(i => Number(i.MoneyIn));
+    //     // console.log(numbersIn)
+
+    //     // gets the sum of the array of numbers: 134
+    //     var sumIn = numbersIn.reduce((a, b) => a + b, 0);
+    //     // console.log(sumIn, "total???")
+
+    //     // MONEY OUT 
+    //     // creates an array of the `number` property: [100, 22, 12]
+    //     var numbersOut = entry.map(i => Number(i.MoneyOut));
+    //     // console.log(numbersOut)
+        
+    //     // gets the sum of the array of numbers: 134
+    //     var sumOut = numbersOut.reduce((a, b) => a + b, 0);
+    //     //console.log(sumOut, "total???")
+
+
+    //     return <div>
+    //         <p>
+    //             Type: {name} <br/>
+    //             Money In Total: {sumIn} <br/>
+    //             Money Out Total: {sumOut} <br/>
+    //         </p>
+    //         <hr/>
+    //     </div>
+    // }  
+
+
+
+
+return <table id="test" key={generator()}>
+    <thead>
+        <tr>
+        <th key={generator()}>Posting Date</th>
+        <th key={generator()}>Transaction Date</th>
+        <th key={generator()}>Description</th>
+        <th key={generator()}>Money In (R)</th>
+        <th key={generator()}>Money Out (R)</th>
+        <th key={generator()}>Balance (R)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {data.map((entry:any) =>  {
+        return <React.Fragment key={generator()}>
+        <tr>
+            <td key={generator()}>{entry.PostingDate}</td>
+            <td key={generator()}>{entry.TransactionDate}</td>
+            <td key={generator()}>{entry.Description}</td>
+            <td key={generator()}>{entry.MoneyIn}</td>
+            <td key={generator()}>{entry.MoneyOut}</td>
+            <td key={generator()}>{entry.Balance}</td>
+        </tr>
+        
+       
+        </React.Fragment>
+        })}
+       
+    </tbody>
+    </table>
+
+
+
+
+import React, { Component } from 'react'
+import LocalStorage from './LocalStorage';
+
+function  S4(): string {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+}
+
+function generator(): string {
+    const isString = `${S4()}${S4()}`;
+    return isString;
+}
+
+interface iExpense {
+    "PostingDate": string,
+    "TransactionDate": string,
+    "Description": string,
+    "MoneyIn": number,
+    "MoneyOut": number,
+    "Balance": number,
+    "Planned"?: boolean,
+    "RecurringExpence"?: boolean,
+    "TypeOfExpence"?: iTypeOfExpence | string
+}
+
+interface iTypeOfExpence{}
+
+
+export default class CsvReader extends Component {
+
+    LS = new LocalStorage("Buget", "Expense_Savings")
+
+    Data: iExpense[] = []
+    names:string[] = []
+
+   
+    readCSV(){
+        return <input type="file" onChange={e=>{
+            var f=e.target.files && e.target.files[0];
+            if(f)
+            {
+              var fr=new FileReader();
+              fr.onloadend=() => {
+                if (typeof (fr.result) == 'string') {
+                  var str: string = fr.result || '';
+                  var byline = str.split("\r").join("").split("\n").reduce((s, c) => {
+                    s.push(c.split('"').join("").split(",").map(o => o.trim()));
+                    return s;
+                  }, [] as string[][]);
+                  if (byline !== undefined) {
+                    this.handleCsvInput(byline);
+                    this.forceUpdate()
+                  }
+                  if (byline === undefined) {
+                    window.alert("Seems to have a problem please check file again");
+                  }
+                }
+              }
+              fr.readAsText(f);
+            }
+          }} />
+  
+    }
+
+    handleCsvInput = (data:any) => {
+        data.forEach((el: any) => {
+        //console.log(el)
+        if(el.length > 1)
+        {
+            var entry = {
+                "PostingDate": el[0],  
+                "TransactionDate": el[1],
+                "Description": el[2],
+                "MoneyIn": el[3],
+                "MoneyOut": el[4],
+                "Balance": el[5]
+            }
+            //console.log(entry)
+            this.Data.push(entry)
+            this.forceUpdate()
+            //console.log(this.Data)
+            this.sortRawCsvData(this.Data)
+            this.names = this.sortRawCsvData(this.Data)
+            this.forceUpdate()
+            return this.names
+        } 
+        });
+        // this.SaveCsvData(this.Data)
+        return this.Data
+    };
+
+
+    sortRawCsvData(data:any){
+        var typeArray:any[] = []
+        var sortedArray:any[] = []
+        //  console.log(data.item.Description)
+         data.forEach((el:any) => {
+            var search = el.Description
+            //console.log(search)
+            typeArray.push(search)
+            return typeArray.sort(( a, b ) => a < b ? 1 : 0 ) 
+        });
+        // console.log("typeArray: ", typeArray)
+        sortedArray = typeArray.filter(function(elem, index, self) {
+            return index === self.indexOf(elem);
+        })
+        // console.log("sortedArray: ", sortedArray)
+       return sortedArray
+    }
+
+
+    displayCsvDataTable(data){
+        console.log(data, "???")
+        if(data.PostingDate){
+
+        }
+        return <table id="test" key={generator()}>
+        <thead>
+            <tr>
+            <th key={generator()}>Posting Date</th>
+            <th key={generator()}>Transaction Date</th>
+            <th key={generator()}>Description</th>
+            <th key={generator()}>Money In (R)</th>
+            <th key={generator()}>Money Out (R)</th>
+            <th key={generator()}>Balance (R)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {data.map((entry:any) =>  {
+            return <React.Fragment key={generator()}>
+            <tr>
+                <td key={generator()}>{entry.PostingDate}</td>
+                <td key={generator()}>{entry.TransactionDate}</td>
+                <td key={generator()}>{entry.Description}</td>
+                <td key={generator()}>{entry.MoneyIn}</td>
+                <td key={generator()}>{entry.MoneyOut}</td>
+                <td key={generator()}>{entry.Balance}</td>
+            </tr>
+            
+           
+            </React.Fragment>
+            })}
+           
+        </tbody>
+        </table>
+       
+    }
+
+
+
+ 
+    // BreakdownViewOfData(namesArray: string[], data:iExpense[])
+    // {
+    //     const items = []
+    //     for(let i = 0; i < namesArray.length; i++){
+    //         //console.log(namesArray[i], "name???") 
+            
+    //         var entry = data.filter(ent => ent.Description === namesArray[i])
+    //         //console.log(entry, "entry???")
+
+    //         // MONEY IN
+    //         // creates an array of the `number` property: [100, 22, 12]
+    //         var numbersIn = entry.map(i => Number(i.MoneyIn));
+    //         // console.log(numbersIn)
+
+    //         // gets the sum of the array of numbers: 134
+    //         var sumIn = numbersIn.reduce((a, b) => a + b, 0);
+    //         // console.log(sumIn, "total???")
+
+    //         // MONEY OUT 
+    //         // creates an array of the `number` property: [100, 22, 12]
+    //         var numbersOut = entry.map(i => Number(i.MoneyOut));
+    //         // console.log(numbersOut)
+            
+    //         // gets the sum of the array of numbers: 134
+    //         var sumOut = numbersOut.reduce((a, b) => a + b, 0);
+    //         //console.log(sumOut, "total???")
+
+
+    //         items.push(
+    //             <p key={generator()}>
+    //                 Type: {namesArray[i]} <br/>
+    //                 Money In Total: {sumIn} <br/>
+    //                 Money Out Total: {sumOut} <br/>
+    //             </p>
+                
+    //         )
+    //     }
+
+    //     return <div>
+    //         <h1>Break Down View of Types </h1>
+    //          <div>
+    //          {items} 
+    //          </div>
+    //          <hr/>
+               
+             
+    //     </div>
+        
+        
+    // }
+
+    // SaveCsvData(data: any){
+    //     this.LS.AddToLocalStorage(data)
+    // }
+
+    render() {
+    return (
+      <div>
+        {this.readCSV()}
+        {this.displayCsvDataTable(this.Data)}
+        {/* {this.BreakdownViewOfData(this.names, this.Data)} */}
+        
+    </div>
+    )
+  }
+        
+}
+
+
+// 0: Banking App Cash Sent
+// 1: Banking App Payment Y Kruger
+// 2: Banking App Transfer from Savings Account
+// 3: Banking App Transfer to Savings Account
+// 4: Cash Sent Fee
+// 5: Interest Received
+// 6: Payment Fee
+
+  // console.log("stringSearch", stringSearch) // el.texts => strings
+  var matches = stringSearch.match(arrayExpressions).split(" ").join("");
+  if(matches){
+    console.log("matches", matches)
+    
+  }
+
+  // stringSearch.forEach(element => {
+  //   console.log("????",element.texts[3])
+  //   var txtS_Arr = element.texts
+    
+  //   txtS_Arr.map((ii, index)=> {
+  //     //console.log("ii",index, ii)
+
+  //     var matches = ii.match(arrayExpressions);
+      
+  //     if(matches){
+  //      // console.log("matches", matches)
+  //       matches.forEach(m => {
+  //         // console.log("m", m)
+  //         var canI = m.split(" ").join("")
+  //         // console.log("canI", canI)
+  //         var x = ii.replace(matches, canI)
+  //         // console.log("x", x)
+  //         console.log(ii, index)
+  //       });
+
+  //     }
+  //   })
+  //   // console.log("txtS_Arr",txtS_Arr)
+    
+    
+  // });
+  
+  // console.log("FSCA", FSCA)
+
+  // var position = String(arrayExpressions).search(stringSearch);
+  // var result = (position > -1) ? true : false
+  // console.log("resulting matches", result)
+  // return result;
+
+
+ // var x = StringArrayFromFinished.toString()
+    // console.log("x", x)
+    
+ 
+  
+
+
+  // page.getTextContent({normalizeWhitespace: false, disableCombineTextItems: false})
+  // .then(function(textContent) {
+  //  // console.log(textContent, "textContent")
+  //   var textItems:itext[] = textContent.items;
+ 
+    
+   
+
+    // RE = RowExtractor(rowsFull, ArrayFromData_RE)
+  //   gCN = getColNeeded(colsRight, ArrayFromData_gCN)
+
+    // console.log("Inside RE", RE)
+  //   // console.log("Inside gCN", gCN)
+
+  //   FinalSortedCleanedArrray = addMissingEntryToArrays(RE, gCN)
+  //   FinalSortedCleanedArrray.reverse();
+  //   console.log("FinalSortedCleanedArrray", FinalSortedCleanedArrray)
+    
+
+  //   //Done now it you want to export to csv : 
+  //   // PrepareArrayFor_CSV_Conversion(FinalSortedCleanedArrray)
+
+
+  // });
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  function getMultiPageContent(pdfData){
+  pdfjs.getDocument(pdfData).then((pdf)=> {
+    var pages = [];
+    var documentTotal = []
+    for (var i = 0; i < pdf.numPages; i++) {
+        pages.push(i);
+    }
+    return Promise.all(pages.map((pageNumber)=> {
+        return pdf.getPage(pageNumber + 1).then((page)=> {
+            return page.getTextContent().then((textContent)=> {
+                documentTotal.push(textContent)
+                return documentTotal
+            }).then(()=> {getMultiPageText(documentTotal)})
+        });
+    }))
+  });
+}
+
+function getMultiPageText(textContent){
+  // console.log("textContent", textContent)
+
+  var x=4,y=5;
+  
+  var colsRight:NamedDictionary<iColAndTexts> = {};
+  var rowsFull:NamedDictionary<iColAndTexts> = {};
+
+  var startArrContentItems = []
+
+  textContent.forEach((arr) => {
+    // console.log("arr",indexOfArr, ": ", arr )
+    arr.items.forEach(t=>{
+      popColumn(colsRight,(t)=>t.transform[x]+t.width,t, (t)=>t.transform[y])
+      popRows(rowsFull,(t)=>t.transform[y],t, (t)=>t.transform[x])
+    });
+  })
+  // console.log("New Page");
+  // console.log('colsRight: ',colsRight);
+  // console.log('rowsFull: ',rowsFull);
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+          var textItems = textContent.items;
+          // console.log("textItems", textItems)
+
+          textItems.forEach(t=>{
+            popColumn(colsRight,(t)=>t.transform[x]+t.width,t, (t)=>t.transform[y])
+            popRows(rowsFull,(t)=>t.transform[y],t, (t)=>t.transform[x])
+          })
+
+          // console.log('colsRight: ',colsRight);
+          // console.log('rowsFull: ',rowsFull);
+
+          RE = RowExtractor(rowsFull, ArrayFromData_RE)
+          gCN = getColNeeded(colsRight, ArrayFromData_gCN)
+
+          console.log("Inside RE", RE)
+          console.log("Inside gCN", gCN)
+
+
+          var doneArr = []
+      
+      i.map(row => {
+        console.log( "row", row)
+        doneArr.push(row)
+        return doneArr
+      });
+      doneArr.sort((a, b)=>{return a.pageNr - b.pageNr})
+      console.log( "doneArr", doneArr)

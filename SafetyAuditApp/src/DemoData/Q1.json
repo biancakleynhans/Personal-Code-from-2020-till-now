@@ -1,0 +1,20 @@
+{
+  "Name": ["Construction Health & Safety Audit Inspection"],
+  "Competent Site Supervision": ["Competent Site Supervisor", "Competent Acting Site Supervisor"],
+  "SITE ACCESS": ["Clean", "Clear", "Adequate ramps", "Adequate stairs", "Adequate ladders"],
+  "PROTECTIVE EQUIPMENT": ["Hard hats worn", "Foot protection worn ", "Fall protection worn"],
+  "GUARDRAILS, BARRICADES": ["Located where required ", "Properly constructed/Secured"],
+  "LADDERS/SCAFFOLDS": ["Secured/Tied off (extension ladders)", "Proper angle (extension ladders)", "Proper size and type", "Safe, usable condition"],
+  "HOARDING": ["Secure and in good condition", "Located where required"],
+  "FIRE PROTECTION": ["Extinguishers (by Contractor)"],
+  "HOUSEKEEPING": ["Clear walkways/doorways ", "Clear work areas", "Garbage/debris in controlled piles or bins"],
+  "FALL PROTECTION IN USE": ["Unprotected Openings and Edges", "Working from Scaffolds"],
+  "EXTENSION CORDS": ["General condition of casing, ends, and connections", "Trip hazards"],
+  "WORKER EDUCATION": ["WHMIS training", "Basics of fall protection", "Electrician's C of Q card", "Gas fitters License", "Others (as required)"],
+  "FIRST AID REQUIREMENTS": ["First aid kits (by Contractor)"],
+  "ELEVATING WORK PLATFORM": ["Properly used (tied off to platform)"],
+  "SIGNS & PRINT MATERIAL": ["OH&S Act and Regulations", "WSIB Form 82 poster", "MSDSs", "H&S Policy & Program (Contractor)", "Emergency Response Procedure", "MOL Reports/Documents"],
+  "Temporary Electrical Panels": ["Panel in good condition ", "Panel properly/securely mounted"],
+  "Adequate Work Place Lighting": ["Adequate lighting provided"],
+  "Adequate Ventilation": ["Work area free of fumes and smoke ", "Fumes and smoke properly/safely vented to the outside of building ", "Hepa-filter used to vent work area "]
+}

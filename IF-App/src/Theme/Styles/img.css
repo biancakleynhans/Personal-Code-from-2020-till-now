@@ -1,0 +1,15 @@
+.imgdark{
+    width: 30%;
+    height: 30%;
+    filter: invert(25%);
+}
+.imglight{
+    width: 30%;
+    height: 30%;
+
+}
+/* .imglight{
+    width: 30%;
+    height: 30%;
+
+} */

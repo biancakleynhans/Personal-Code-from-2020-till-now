@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.webfusiononline",
+	"appName": "WebfusionOnline",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

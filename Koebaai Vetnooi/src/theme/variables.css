@@ -1,0 +1,345 @@
+:root {
+	--ion-color-primary: #f78282;
+	--ion-color-primary-rgb: 236, 222, 211;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0, 0, 0;
+	--ion-color-primary-shade: #d0c3ba;
+	--ion-color-primary-tint: #eee1d7;
+
+	--ion-color-secondary: #eeb4b4;
+	--ion-color-secondary-rgb: 187, 187, 187;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0, 0, 0;
+	--ion-color-secondary-shade: #a5a5a5;
+	--ion-color-secondary-tint: #c2c2c2;
+
+	--ion-color-tertiary: #d8bdb6;
+	--ion-color-tertiary-rgb: 239, 235, 235;
+	--ion-color-tertiary-contrast: #000000;
+	--ion-color-tertiary-contrast-rgb: 0, 0, 0;
+	--ion-color-tertiary-shade: #d2cfcf;
+	--ion-color-tertiary-tint: #f1eded;
+
+	--ion-color-success: #70e09c;
+	--ion-color-success-rgb: 112, 224, 156;
+	--ion-color-success-contrast: #000000;
+	--ion-color-success-contrast-rgb: 0, 0, 0;
+	--ion-color-success-shade: #63c589;
+	--ion-color-success-tint: #7ee3a6;
+
+	--ion-color-warning: #ffe084;
+	--ion-color-warning-rgb: 255, 224, 132;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0, 0, 0;
+	--ion-color-warning-shade: #e0c574;
+	--ion-color-warning-tint: #ffe390;
+
+	--ion-color-danger: #ec4d61;
+	--ion-color-danger-rgb: 236, 77, 97;
+	--ion-color-danger-contrast: #ffffff;
+	--ion-color-danger-contrast-rgb: 255, 255, 255;
+	--ion-color-danger-shade: #d04455;
+	--ion-color-danger-tint: #ee5f71;
+
+	--ion-color-dark: #000000;
+	--ion-color-dark-rgb: 0, 0, 0;
+	--ion-color-dark-contrast: #ffffff;
+	--ion-color-dark-contrast-rgb: 255, 255, 255;
+	--ion-color-dark-shade: #000000;
+	--ion-color-dark-tint: #1a1a1a;
+
+	--ion-color-medium: #5c5c5c;
+	--ion-color-medium-rgb: 112, 114, 124;
+	--ion-color-medium-contrast: #ffffff;
+	--ion-color-medium-contrast-rgb: 255, 255, 255;
+	--ion-color-medium-shade: #63646d;
+	--ion-color-medium-tint: #7e8089;
+
+	--ion-color-light: #ffffff;
+	--ion-color-light-rgb: 206, 206, 206;
+	--ion-color-light-contrast: #000000;
+	--ion-color-light-contrast-rgb: 0, 0, 0;
+	--ion-color-light-shade: #b5b5b5;
+	--ion-color-light-tint: #d3d3d3;
+
+	text-align: center;
+	--ion-background-color: #5c5c5c;
+	--ion-text-color: #ffffff;
+	--ion-text-color-rgb: 255, 255, 255;
+}
+
+.avatarSmall {
+	margin: 0 auto;
+}
+
+.avatarBig {
+	width: '350px';
+	height: '350px';
+	margin: 0 auto;
+}
+
+.roundedInput {
+	--border-color: var(--ion-color-primary);
+	--border-radius: 30px;
+	--border-width: 0px;
+	--box-shadow: 2px var(--ion-color-primary);
+	--highlight-height: 0;
+	--background: var(--ion-color-secondary);
+	margin: 0 auto;
+	padding: 25px 25px;
+}
+
+.roundedInput.ion-invalid.item-has-focus {
+	--border-color: var(--ion-color-danger-shade);
+}
+
+.roundedInput.ion-valid.item-has-focus {
+	--border-color: var(--ion-color-success-shade);
+}
+
+.roundedInput.ion-invalid.ion-dirty {
+	--border-color: var(--ion-color-danger-shade);
+}
+
+.roundedInput.ion-valid.ion-dirty {
+	--border-color: var(--ion-color-success-shade);
+}
+
+.eventCard {
+	--ion-grid-padding: 0;
+	--ion-grid-column-padding: 0;
+}
+
+ion-tab-bar {
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+ion-label {
+	display: flex !important;
+	align-items: left;
+	width: 50px;
+}
+
+ion-label ion-icon {
+	height: 100%;
+	width: 50px;
+	margin-right: 0;
+	margin-left: 0;
+	padding-right: 0;
+	padding-left: 0;
+}
+
+ion-imgimg {
+	display: block;
+	max-width: 300px;
+	max-height: 95px;
+	width: auto;
+	height: 95px;
+}
+
+ion-toolbar.rounding {
+	height: 70px;
+	margin-top: -60px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+}
+
+.eventInput {
+	--border-color: var(--ion-color-primary);
+	/* --border-radius: 30px; */
+	--border-width: 0px;
+	--box-shadow: 2px var(--ion-color-primary);
+	--highlight-height: 0;
+	--background: var(--ion-color-secondary);
+	margin: 0 auto;
+	padding: 5px 15px;
+}
+
+.avatarSSmall {
+	display: inline-block;
+	width: 10vw !important;
+	height: 10vw !important;
+	margin: 1px;
+	/* border: 0.5vw solid #fff; */
+}
+
+.profileBar {
+	border-radius: 200px;
+	width: 200px;
+	margin-left: 75px;
+	margin-top: -25px;
+}
+/* 
+ion-header {
+	--background-color: transparent !important;
+	--ion-color-base: transparent !important;
+}
+
+ion-toolbar {
+	--background: transparent;
+	--ion-toolbar-text-color: white;
+} */
+
+ion-fab-button {
+	--background: transparent;
+	--ion-toolbar-text-color: black;
+}
+
+ion-card-header {
+	background-color: transparent;
+}
+
+textarea {
+	overflow: visible;
+	height: 250px;
+	font: inherit;
+	color: inherit;
+}
+
+.uploadBtn {
+	background-color: var(--ion-color-primary);
+	height: 150px;
+	flex: 0 0 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: xx-large;
+	font-weight: 900;
+	color: white;
+}
+div.item-inner {
+	padding-left: unset;
+	padding-right: unset;
+	padding-inline-start: 1px;
+	padding-inline-end: 1px;
+}
+
+.leaflet-container {
+	width: 100%;
+	height: 40%;
+}
+
+.Modal1 {
+	--backdrop-opacity: 0.5;
+	--height: 250px;
+	--width: 250px;
+	--border-radius: 20px;
+	--border-style: none;
+	--background: var(--ion-color-tertiary-tint);
+}
+
+.Modal2 {
+	--height: 750px;
+	--width: 300px;
+	--backdrop-opacity: 0.5;
+}
+
+.Modal22 {
+	--height: 750px;
+	--width: 750px;
+	--backdrop-opacity: 0.5;
+}
+
+ion-content.container {
+	--background: url(/assets/img/loading.png) 0 0/100% 100% no-repeat;
+}
+
+ion-avatar.listAvatar {
+	max-width: 25px;
+	max-height: 25px;
+}
+
+ion-textarea.inputWhatsapp {
+	--background: rgb(216, 216, 216);
+	--color: black;
+	border-radius: 20px;
+	--padding-start: 10px;
+	--padding-end: 10px;
+
+	height: '50px';
+}
+
+.deleteCheckbox {
+	--background: rgb(180, 178, 178);
+	--border-color: rgb(180, 178, 178);
+	--background-checked: var(--ion-color-primary);
+	--border-color-checked: var(--ion-color-primary);
+	--border-radius: 10px;
+	--border-width: 2px;
+	--checkmark-color: white;
+	--checkmark-width: 5px;
+	--size: 30px;
+}
+
+.ownIconMaker {
+	width: 30px;
+	height: 30px;
+	margin-left: -10px;
+}
+
+.ownIconMaker1 {
+	width: 30px;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+}
+.comment {
+	--background: #bc8f8f5d;
+	--border-radius: 20px;
+	padding: 10px;
+}
+
+.longLabel {
+	padding-left: 10px;
+	word-break: break-all;
+	white-space: normal !important;
+}
+
+.postContainer {
+	--background: #83838311;
+}
+
+ion-card.chatBubble_date {
+	--background: var(--ion-color-light-shade);
+	--color: white;
+}
+
+ion-card.chatBubble_reciever {
+	--background: var(--ion-color-primary);
+	--color: black;
+}
+
+ion-card.chatBubble_sender {
+	--background: var(--ion-color-secondary);
+	--color: black;
+}
+
+ion-card.itemCardMsg {
+	padding: 0;
+	margin: 0;
+	border-radius: 50px;
+	--background: var(--ion-color-tertiary);
+	--color: black;
+}
+
+p {
+	font-size: 1.2em !important;
+}
+
+img {
+	object-fit: cover !important;
+}
+
+/* code to hidden the tool bar profile name in the profile setting page*/
+
+.list-md .item-lines-none .item-native {
+	display: none;
+}
+
+ion-footer.ion-toolbar {
+	display: none !important;
+}
+.loader {
+	color: var(--ion-text-color);
+}

@@ -1,0 +1,119 @@
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Our sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+}
+
+/* Change color on hover */
+.bm-item:hover {
+  color: white;
+}
+
+/* The rest copied directly from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: var(--nav-primary-color);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+  width: 200px;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+.bm-item {
+  color: white;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+/* DROPDOWNS */
+
+.dropbtn{
+  margin:1.5%;
+ color: #ffffff;
+ /* color: var(--text-color);   */
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-items: center;
+ text-decoration: none;
+
+}
+.dropbtn > * {
+ margin:14px;
+}
+.dropdown-content {
+ display: none;
+ position: center;
+ right: 0;
+}
+
+.dropdown-content a {
+ margin:1.5%;
+ color: #ffffff;
+ /* color: var(--text-color);   */
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-items: center;
+ text-decoration: none;
+}
+.dropbtn :hover{
+ background-color: #454547;
+ background-color: var(--nav-hover-color);
+}
+.dropdown-content a:hover {
+ margin:1.5%;
+ color: #ffffff;
+ /* color: var(--text-color);   */
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-items: center;
+ text-decoration: none;
+}
+.dropdown:hover .dropdown-content {display: block;}

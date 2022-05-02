@@ -1,0 +1,7 @@
+{
+  "name": "online_shop_base_code",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

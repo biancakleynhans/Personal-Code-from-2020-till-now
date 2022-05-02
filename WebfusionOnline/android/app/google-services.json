@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "35897267306",
+    "project_id": "webfusiononline-368cb",
+    "storage_bucket": "webfusiononline-368cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35897267306:android:4ca0956fbfe693832ee613",
+        "android_client_info": {
+          "package_name": "io.ionic.webfusiononline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35897267306-dn9vingfsmh6e1c2viuuni593qclsapr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCni0eYrK9GXD5lwVD9F8x_7L1pH-5m9es"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35897267306-dn9vingfsmh6e1c2viuuni593qclsapr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "SkeletonInTheCloset",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

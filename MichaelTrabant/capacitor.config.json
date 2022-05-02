@@ -1,0 +1,13 @@
+{
+	"appId": "io.ionic.michealTrabant",
+	"appName": "Michael Trabant",
+	"bundledWebRuntime": false,
+	"npmClient": "npm",
+	"webDir": "build",
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 0
+		}
+	},
+	"cordova": {}
+}

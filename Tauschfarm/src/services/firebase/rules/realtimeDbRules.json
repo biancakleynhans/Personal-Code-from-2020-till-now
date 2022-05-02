@@ -1,0 +1,41 @@
+{
+	"rules": {
+		".read": true,
+		"USERS": {
+			".read": true,
+			".write": true
+		},
+		"CATEGORIES": {
+			".read": true,
+			".write": true
+		},
+		"ITEMS": {
+			".read": true,
+			".write": true
+		},
+		"DONATIONS": {
+			".read": true,
+			".write": true
+		},
+		"EVENTS": {
+			".read": true,
+			".write": true
+		},
+		"GROUPS": {
+			".read": true,
+			".write": true
+		},
+		"POSTS": {
+			".read": true,
+			".write": true
+		},
+		"FAQ": {
+			".read": true,
+			".write": true
+		},
+		"presence": {
+			".read": true,
+			".write": true
+		}
+	}
+}

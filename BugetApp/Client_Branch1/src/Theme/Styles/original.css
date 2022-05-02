@@ -1,0 +1,25 @@
+h1{
+    color: #ffffff;
+    color: var(--p3-color);
+    text-align: center;
+    font-size: 5vmax;
+    padding: 0.5%;
+}
+
+
+p,h2{
+    color: #ffffff;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 2vmax;
+    padding: 2%;
+}
+
+strong{
+    color: #d006f8;
+    color: var(--p3-color);
+    text-align: center;
+    font-size: 2vmax;
+    padding: 2%;
+}
+

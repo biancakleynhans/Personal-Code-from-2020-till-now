@@ -1,0 +1,49 @@
+h1{
+    color: #ffffff;
+    color: var(--p3-color);
+    text-align: center;
+    font-size: 5vmax;
+    padding: 0.5%;
+}
+
+h1.mainH1{
+    background: #2f2f31;
+	background: var(--primary-color);
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: var(--text-color);
+	margin: -16px -16px 16px -16px;
+}
+p,h2{
+    color: #ffffff;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 2vmax;
+    padding: 2%;
+}
+
+strong{
+    color: #d006f8;
+    color: var(--p3-color);
+    text-align: center;
+    font-size: 2vmax;
+    padding: 2%;
+}
+
+.ico{
+
+    font-size: xx-large;
+    margin:1.5%;
+    color: #ffffff;
+    color: var(--text-color);  
+    background-color: #454547;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    text-decoration: none;
+    display: inline-block;
+}

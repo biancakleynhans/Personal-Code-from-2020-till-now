@@ -1,0 +1,23 @@
+.overlay{
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 10vmin;
+    z-index: 5000;
+}
+
+#App {
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  
+  #page-wrap {
+    text-align: center;
+    overflow: visible;
+  }
+  

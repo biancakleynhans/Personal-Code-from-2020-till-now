@@ -1,0 +1,30 @@
+
+  audio {
+    filter:invert(100%);
+}
+  audio:hover, audio:focus, audio:active
+{
+-webkit-box-shadow: 15px 15px 20px var(--primary-color);
+-moz-box-shadow: 15px 15px 20px var(--primary-color);
+box-shadow: 15px 15px 20px var(--primary-color);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+outline: none;
+}
+
+
+audio
+{
+  outline: none;
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+  transition:all 0.5s linear;
+  -moz-box-shadow: 4px 4px 4px 2px var(--hover-color);
+  -webkit-box-shadow:  4px 4px 8px 2px var(--hover-color);
+  box-shadow: 4px 4px 4px 0px var(--hover-color);
+  -moz-border-radius:30px 30px 30px 30px ;
+  -webkit-border-radius:30px 30px 30px 30px ;
+  border-radius:30px 30px 30px 30px ;
+}

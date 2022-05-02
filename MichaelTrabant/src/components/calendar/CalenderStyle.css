@@ -1,0 +1,14 @@
+.day-current {
+	background: var(--ion-color-secondary);
+	opacity: 50%;
+	border-radius: 90%;
+}
+.day {
+	background: var(--ion-background-color);
+}
+
+.dayButton {
+	--border-radius: 100%;
+	width: 48px;
+	height: 47px;
+}

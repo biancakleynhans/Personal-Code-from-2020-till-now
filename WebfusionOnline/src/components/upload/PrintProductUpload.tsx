@@ -1,0 +1,268 @@
+import React, { useState } from "react";
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCol, IonGrid, IonImg, IonInput, IonItem, IonLabel, IonRow } from "@ionic/react";
+import { ImageArr, PrintProduct } from "../../models/Product_models";
+import { SaveBatchedDataToDB, SaveSingleDataToDB } from "../../firebase/FirebaseFireStoreCRUD";
+
+//   Name: string;
+//   Desc: string
+//   Sides: string[];
+//   Color: string[];
+//   Processing: string[];
+//   DesignFee: string;
+//   HardProof: string;
+//   PaperMaterial: string[];
+//   Size: string[];
+//   Price_per_unit: string;
+//   Price_per_2_units: string;
+//   Price_per_10_units: string;
+//   Price_per_25_units: string;
+//   Price_per_50_units: string;
+//   Price_per_75_units: string;
+//   Price_per_100_units: string;
+//   ImageFiles: any[];
+//   extras: any[];
+
+export default function PrintProductUpload() {
+  const [prodName, setProdName] = useState<string>("");
+  const [prodDesc, setProdDesc] = useState<string>("");
+  const [sides, setSides] = useState<string>("");
+  const [color, setColor] = useState<string>("");
+  const [pros, setPros] = useState<string>("");
+  const [paper, setPaper] = useState<string>("");
+  const [size, setSize] = useState<string>("");
+  const [df, setDf] = useState<string>("");
+  const [hc, setHc] = useState<string>("");
+  const [priceSingle, setpriceSingle] = useState<string>("");
+  const [extra, setExtra] = useState<string>("");
+  const [pictures, setPictures] = useState<ImageArr[]>([]);
+  const [batch, setbatch] = useState<boolean>(false);
+  const [batchData, setbatchData] = useState<PrintProduct[]>([]);
+
+  function resetSate() {
+    setColor("");
+    setDf("");
+    setExtra("");
+    setHc("");
+    setPaper("");
+    setPictures([]);
+    setProdDesc("");
+    setProdName("");
+    setPros("");
+    setSides("");
+    setSize("");
+    setbatch(false);
+    setbatchData([]);
+    setpriceSingle("");
+  }
+
+  function submitForm() {
+    let currProd: PrintProduct = {
+      Color: color.split(","),
+      Desc: prodDesc,
+      DesignFee: df,
+      HardProof: hc,
+      ImageFiles: pictures,
+      Name: prodName,
+      PaperMaterial: paper.split(","),
+      Price_per_unit: priceSingle,
+      Processing: pros.split(","),
+      Sides: sides.split(","),
+      Size: size.split(","),
+      extras: extra.split(",").length > 0 ? extra.split(",") : []
+    };
+
+    console.log("VALUES AT SUBMIT", batch, batchData, currProd);
+    // gonna do batched or single saves data traffic in the end
+
+    if (batch) {
+      let new_batch = batchData;
+      new_batch.push(currProd);
+      setbatchData(new_batch);
+    } else {
+      // add single item to db
+      SaveSingleDataToDB("print", currProd).then((re) => {
+        console.log("RE", re);
+        resetSate();
+        window.alert(`The upload was ${re}`);
+      });
+    }
+  }
+
+  function sendBatchedData() {
+    // Add to batch transaction to db
+    SaveBatchedDataToDB("print", batchData).then((re) => {
+      console.log("RE", re);
+      resetSate();
+      window.alert(`The upload was ${re}`);
+    });
+  }
+
+  function handle_upload(e: any) {
+    e.preventDefault();
+    let tempArr: any[] = [];
+
+    [...e.target.files].forEach((file) => {
+      // console.log("file >>> ", file);
+      tempArr.push({
+        data: file,
+        url: URL.createObjectURL(file)
+      });
+    });
+
+    // console.log("pictures >> ", tempArr);
+    setPictures(tempArr);
+  }
+
+  function removeImageFromArr(index: number) {
+    let newArr = pictures;
+    setPictures([]);
+    newArr.splice(index, 1);
+    setPictures(newArr);
+  }
+
+  return (
+    <IonCard>
+      <IonCardHeader>Would you like to batch tranctions or single items at a time</IonCardHeader>
+      <IonCardSubtitle>
+        <IonButton color={batch ? "primary" : "light"} onClick={() => setbatch(true)}>
+          Batched
+        </IonButton>
+        <IonButton color={batch ? "light" : "primary"} onClick={() => setbatch(false)}>
+          Single
+        </IonButton>
+      </IonCardSubtitle>
+      <IonCardContent>
+        {/* NAME */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Product name *
+          </IonLabel>
+          <IonInput value={prodName} type='text' onIonChange={(e) => setProdName(e.detail.value!)} minlength={1} maxlength={150} required />
+        </IonItem>
+
+        {/* DESC */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Product description *
+          </IonLabel>
+          <IonInput value={prodDesc} type='text' onIonChange={(e) => setProdDesc(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* SIDES */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Sides * (Please write all options separated by a comma (,) )
+          </IonLabel>
+          <IonInput value={sides} type='text' onIonChange={(e) => setSides(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* COLOR * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Colors * (Please write all options separated by a comma (,) )
+          </IonLabel>
+          <IonInput value={color} type='text' onIonChange={(e) => setColor(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* PROCESSING * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Processing * (Please write all options separated by a comma (,) )
+          </IonLabel>
+          <IonInput value={pros} type='text' onIonChange={(e) => setPros(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* PAPER * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Paper / Material types * (Please write all options separated by a comma (,) )
+          </IonLabel>
+          <IonInput value={paper} type='text' onIonChange={(e) => setPaper(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* SIZE * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Sizes * (Please write all options separated by a comma (,) )
+          </IonLabel>
+          <IonInput value={size} type='text' onIonChange={(e) => setSize(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* DESIGN * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Design Fee *
+          </IonLabel>
+          <IonInput value={df} type='text' onIonChange={(e) => setDf(e.detail.value!)} minlength={1} maxlength={10} required />
+        </IonItem>
+
+        {/* hard copy * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Hard copy Fee *
+          </IonLabel>
+          <IonInput value={hc} type='text' onIonChange={(e) => setHc(e.detail.value!)} minlength={1} maxlength={10} required />
+        </IonItem>
+
+        {/* Price * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Price per Single Unit *
+          </IonLabel>
+          <IonInput value={priceSingle} type='text' onIonChange={(e) => setpriceSingle(e.detail.value!)} minlength={1} maxlength={10} required />
+        </IonItem>
+
+        {/* EXTRA * */}
+        <IonItem lines='none'>
+          <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            Possible extras (Please write all options separated by single space, if none leave empty )
+          </IonLabel>
+          <IonInput value={extra} type='text' onIonChange={(e) => setExtra(e.detail.value!)} minlength={1} maxlength={450} required />
+        </IonItem>
+
+        {/* IMAGES  */}
+        <input type='file' multiple id='file-upload' accept='*.png, *.jpg, *.jpeg' style={{ display: "none" }} onChange={(e) => handle_upload(e)} />
+        <IonItem>
+          <IonLabel class='ion-text-wrap'>Image(s)</IonLabel>
+          <IonButton color='secondary' onClick={() => (document as any).getElementById("file-upload").click()}>
+            Choose image(s)
+          </IonButton>
+        </IonItem>
+        {pictures.length > 0 && (
+          <IonGrid>
+            <IonRow>
+              {pictures.map((data, index) => {
+                return (
+                  <IonCol size='2' key={index}>
+                    <IonCard>
+                      <IonCardContent>
+                        <IonImg src={data.url} alt='broken' style={{ height: "150px", width: "150px" }} />
+                        <IonButton color='tertiary' onClick={() => removeImageFromArr(index)}>
+                          Remove
+                        </IonButton>
+                      </IonCardContent>
+                    </IonCard>
+                  </IonCol>
+                );
+              })}
+            </IonRow>
+          </IonGrid>
+        )}
+
+        <br />
+
+        <IonButton type='button' onClick={() => submitForm()}>
+          {batch ? "Add to batch" : "Upload"}
+        </IonButton>
+        <br />
+        {batch && batchData.length > 2 ? (
+          <IonButton type='button' onClick={() => sendBatchedData()}>
+            Upload batch data
+          </IonButton>
+        ) : (
+          <></>
+        )}
+      </IonCardContent>
+    </IonCard>
+  );
+}
