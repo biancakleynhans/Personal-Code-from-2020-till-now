@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router";
 import { IonContent, IonInput, IonItem, IonLabel, IonList, IonPage, IonButton, IonLoading, IonListHeader } from "@ionic/react";
-import HeaderComponent from "../../components/headersFooters/HeaderComponent";
-import { useAuth } from "../../firebase/FirebaseAuthContext";
-import FooterComponent from "../../components/headersFooters/FooterComponent";
+import { ResetPasswordF } from "../../firebase/FirebaseAuth";
+import PageHeader from "../../components/headersFooters/PageHeader";
 
 // A custom hook that builds on useLocation to parse the query string for you.
 function useQuery() {
@@ -12,7 +11,6 @@ function useQuery() {
 
 export default function ResetPassword() {
   const query = useQuery();
-  const { resetPassword } = useAuth();
   const [password, setPassword] = useState<string>("");
   const [isSubmitting, setisSubmitting] = useState<boolean>(false);
   const [toastMsg, setToastMsg] = useState<string>("Connecting to server please wait...");
@@ -24,7 +22,7 @@ export default function ResetPassword() {
     // console.log(query.get("mode"), query.get("oobCode"));
 
     setisSubmitting(true);
-    resetPassword(code, password)
+    ResetPasswordF(code, password)
       .then((res) => {
         console.log("RES Suscess", res);
         setToastMsg("Email sent Sucesesfully, please check your email");
@@ -40,8 +38,8 @@ export default function ResetPassword() {
 
   return (
     <IonPage>
-      <IonContent>
-        <HeaderComponent title={"Password reset"} />
+      <IonContent fullscreen>
+        <PageHeader header={"Password reset"} />
 
         <IonList>
           <IonListHeader>Please provide a new password.</IonListHeader>
@@ -71,7 +69,6 @@ export default function ResetPassword() {
           message={toastMsg}
           duration={35000}
         />
-        <FooterComponent />
       </IonContent>
     </IonPage>
   );

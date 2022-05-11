@@ -1,24 +1,17 @@
 import { IonApp, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-
+import Menu from "./components/headersFooters/Menu";
 import Routing from "./routes/Routing";
-import AuthContextProvider from "./firebase/FirebaseAuthContext";
-import MenuComponent from "./components/headersFooters/MenuComponent";
-import DataContextProvider from "./firebase/FirebaseDataContext";
 
 setupIonicReact();
 
 const App: React.FC = () => (
-  <AuthContextProvider>
-    <DataContextProvider>
-      <IonApp>
-        <IonReactRouter>
-          <MenuComponent />
-          <Routing />
-        </IonReactRouter>
-      </IonApp>
-    </DataContextProvider>
-  </AuthContextProvider>
+  <IonApp>
+    <IonReactRouter>
+      <Menu />
+      <Routing />
+    </IonReactRouter>
+  </IonApp>
 );
 
 export default App;

@@ -6,14 +6,13 @@ import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
 
 const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyC4Nzpugm8JspgqZiVXvu3gwLZKS_vaTmQ",
-  authDomain: "skeleton-in-the-closet.firebaseapp.com",
-  databaseURL: "https://skeleton-in-the-closet-default-rtdb.firebaseio.com",
-  projectId: "skeleton-in-the-closet",
-  storageBucket: "skeleton-in-the-closet.appspot.com",
-  messagingSenderId: "275207192810",
-  appId: "1:275207192810:web:9ea73cefdcdc21a7419793",
-  measurementId: "G-7NRLD83HV0"
+  apiKey: "AIzaSyD3dlM4RtF8TRTSwmSjHwUeOUxWEBsqYV0",
+  authDomain: "skeleton-closet.firebaseapp.com",
+  projectId: "skeleton-closet",
+  storageBucket: "skeleton-closet.appspot.com",
+  messagingSenderId: "997323050265",
+  appId: "1:997323050265:web:c3da6fdbd78ff4227e0988",
+  measurementId: "G-P2Q09MCN4Z"
 };
 
 // Initialize Firebase

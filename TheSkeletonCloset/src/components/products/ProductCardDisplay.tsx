@@ -1,5 +1,6 @@
 import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle } from "@ionic/react";
-import { iProduct } from "../../models/Product_models";
+import { PLACEHOLDER } from "../../constants/AppBasedd";
+import { iProduct } from "../../models/Products";
 
 interface iProps {
   product: iProduct;
@@ -7,13 +8,13 @@ interface iProps {
 }
 
 export default function ProductCardDisplay(props: iProps) {
-  let use = props.product.images[0] !== undefined ? props.product.images[0] : "";
+  let use = props.product.images !== undefined && props.product.images !== undefined ? props.product.images[0] : PLACEHOLDER;
   return (
     <IonCard color='light' routerLink={props.route}>
       <IonCard color='none' style={{ backgroundImage: `url(${use})` }} className='designCard' />
       <IonCardHeader>
         <IonCardTitle>{props.product.title}</IonCardTitle>
-        <IonCardSubtitle>R {props.product.price}</IonCardSubtitle>
+        <IonCardSubtitle>R {props.product.priceSell}</IonCardSubtitle>
       </IonCardHeader>
     </IonCard>
   );

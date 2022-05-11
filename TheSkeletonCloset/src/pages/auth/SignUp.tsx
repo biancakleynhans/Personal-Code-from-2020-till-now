@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import { useHistory, useLocation } from "react-router";
-import { IonContent, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonCheckbox, IonTitle, IonToolbar, IonButton, IonLoading } from "@ionic/react";
-import HeaderComponent from "../../components/headersFooters/HeaderComponent";
-import { useAuth } from "../../firebase/FirebaseAuthContext";
-import { AllRoutesObj, LocationState } from "../../routes/AllRoutes";
-import FooterComponent from "../../components/headersFooters/FooterComponent";
+import { useEffect, useState } from "react";
+import { IonButton, IonCard, IonCheckbox, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonLoading, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { iData, iError } from "../../models/Forms";
+import { RoutesObj } from "../../routes/Routes";
+import { validateSignUpData } from "../../utils/Validators";
+import { SignUpEmailPassAction } from "../../firebase/FirebaseAuth";
+import Error from "../../components/reusable/Error";
 
-export default function SignUp() {
-  const history = useHistory();
-  const location = useLocation<LocationState>();
-
+export default function SignUpPage() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [fName, setfName] = useState<string>("");
@@ -18,32 +15,42 @@ export default function SignUp() {
 
   const [agreeBtn, setAgreeBtn] = useState<boolean>(false);
   const [isSubmitting, setisSubmitting] = useState<boolean>(false);
-  const [toastMsg, setToastMsg] = useState<string>("Connecting to server please wait...");
+  const [errs, seterrs] = useState<iError>({ email: "", password: "", cell: "" } as iError);
 
-  const { register, createNewUser } = useAuth();
+  useEffect(() => {
+    let data: iData = { email, password, cell, fn: fName, ln: lName } as iData;
+    const { valid, errors } = validateSignUpData(data);
 
-  function submit() {
-    // console.log("STATE", email, password, agreeBtn, isSubmitting);
-    setisSubmitting(!isSubmitting);
-    register(email, password)
-      .then((res) => {
-        console.log("RES Suscess", res);
-        // DO firebase call to add user
-        createNewUser(res.user.uid, res.user, { fn: fName, ln: lName, phone: cell, email: email });
-        // setToastMsg("Sucsessfully registered as new client");
-        history.push(location.state?.from ?? AllRoutesObj.menu.home.path);
-      })
-      .catch((err) => {
-        console.log("ERROR", err.message);
-        setToastMsg(err.message);
-      })
-      .finally(() => {
-        setisSubmitting(false);
-      });
+    if (!valid) {
+      console.log("we have errors", errors, errs);
+
+      if (errors.email !== errs.email) {
+        seterrs({ ...errs, email: errors.email });
+      }
+      if (errors.password !== errs.password) {
+        seterrs({ ...errs, password: errors.password });
+      }
+      if (errors.cell !== errs.cell) {
+        seterrs({ ...errs, cell: errors.cell });
+      }
+      if (errors.fn !== errs.fn) {
+        seterrs({ ...errs, fn: errors.fn });
+      }
+      if (errors.ln !== errs.ln) {
+        seterrs({ ...errs, ln: errors.ln });
+      }
+    }
+  }, [email, password, cell, fName, lName]);
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    setisSubmitting(true);
+    console.log("submit", email, password, fName, lName, cell);
+    SignUpEmailPassAction(email, password);
   }
 
   function disableSubmit() {
-    if (email.length < 8 || password.length < 4 || !agreeBtn) {
+    if (email.length < 8 || password.length < 7 || !agreeBtn) {
       return true;
     } else {
       return false;
@@ -52,51 +59,59 @@ export default function SignUp() {
 
   return (
     <IonPage>
-      <IonContent>
-        <HeaderComponent title={"Sign Up"} />
-
+      <IonContent fullscreen>
         <IonHeader className='ion-no-border'>
           <IonToolbar>
-            <IonTitle style={{ fontSize: "25px" }}>Account Info</IonTitle>
+            <IonTitle style={{ fontSize: "25px", textAlign: "center" }}>Sign Up</IonTitle>
           </IonToolbar>
         </IonHeader>
 
-        <IonList>
+        <IonCard>
+          {/* First name */}
+          {errs.fn && <Error error={errs.fn} />}
           <IonItem lines='none'>
-            {/* First name */}
-            <IonLabel style={{ fontSize: "22px", padding: "11.5px" }} position='stacked'>
+            <IonLabel class='ion-text-wrap' style={{ fontSize: "18px" }} position='floating'>
               First Name *
             </IonLabel>
             <IonInput required value={fName} onIonChange={(e) => setfName(e.detail.value!)}></IonInput>
           </IonItem>
+
           {/* Last name */}
+          {errs.ln && <Error error={errs.ln} />}
           <IonItem lines='none'>
-            <IonLabel style={{ fontSize: "22px", padding: "11.5px" }} position='stacked'>
+            <IonLabel class='ion-text-wrap' style={{ fontSize: "18px" }} position='floating'>
               Last Name *
             </IonLabel>
             <IonInput required value={lName} onIonChange={(e) => setlName(e.detail.value!)}></IonInput>
           </IonItem>
+
           {/* Phone number */}
+          {errs.cell && <Error error={errs.cell} />}
           <IonItem lines='none'>
-            <IonLabel style={{ fontSize: "22px", padding: "11.5px" }} position='stacked'>
+            <IonLabel class='ion-text-wrap' style={{ fontSize: "18px" }} position='floating'>
               Phone Number *
             </IonLabel>
             <IonInput required value={cell} onIonChange={(e) => setcell(e.detail.value!)}></IonInput>
           </IonItem>
+
           {/* Email */}
+          {errs.email && <Error error={errs.email} />}
           <IonItem lines='none'>
-            <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            <IonLabel class='ion-text-wrap' style={{ fontSize: "18.5px" }} position='floating'>
               Email *
             </IonLabel>
             <IonInput required value={email} onIonChange={(e) => setEmail(e.detail.value!)} />
           </IonItem>
+
           {/* Password */}
+          {errs.password && <Error error={errs.password} />}
           <IonItem lines='none'>
-            <IonLabel style={{ fontSize: "22.5px", padding: "11.5px" }} position='stacked'>
+            <IonLabel class='ion-text-wrap' style={{ fontSize: "18.5px" }} position='floating'>
               Password *
             </IonLabel>
             <IonInput required value={password} onIonChange={(e) => setPassword(e.detail.value!)} />
           </IonItem>
+
           {/* T's and C's */}
           <IonItem lines='none'>
             <IonLabel class='ion-text-wrap'>
@@ -111,11 +126,19 @@ export default function SignUp() {
             </IonLabel>
             <IonCheckbox slot='start' checked={agreeBtn} onIonChange={(e: any) => setAgreeBtn(!agreeBtn)} />
           </IonItem>
+
           {/* Submit Button */}
-          <IonButton color='primary' disabled={disableSubmit()} onClick={() => submit()}>
+          <IonButton color='primary' disabled={disableSubmit()} onClick={(e) => handleSubmit(e)}>
             Sign Up
           </IonButton>
-        </IonList>
+
+          <br />
+          <br />
+          {/* Forgot Password  */}
+          <IonButton fill='clear' color='tertiary' routerLink={RoutesObj.auth.signIn.path}>
+            Already have an account ? Sign in
+          </IonButton>
+        </IonCard>
 
         <IonLoading
           // cssClass='my-custom-class'
@@ -125,10 +148,9 @@ export default function SignUp() {
           spinner='bubbles'
           isOpen={isSubmitting}
           onDidDismiss={() => setisSubmitting(false)}
-          message={toastMsg}
+          message={"Connecting to server please wait..."}
           duration={25000}
         />
-        <FooterComponent />
       </IonContent>
     </IonPage>
   );

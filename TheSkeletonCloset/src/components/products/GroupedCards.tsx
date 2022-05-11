@@ -1,5 +1,6 @@
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import { useEffect, useState } from "react";
+import { PLACEHOLDER } from "../../constants/AppBasedd";
 import CategoryBar from "../headersFooters/CategoryBar";
 import CatSubCatCardDisplay from "./CatSubCatCardDisplay";
 import ProductCardDisplay from "./ProductCardDisplay";
@@ -9,6 +10,7 @@ interface iProps {
   arrToDisplay: any[];
   title: string;
   prodOrCat: "cat" | "prod";
+  routes?: string[];
 }
 
 export default function GroupedCards(props: iProps) {
@@ -49,9 +51,10 @@ export default function GroupedCards(props: iProps) {
       <IonRow>
         {props.prodOrCat === "cat" &&
           props.arrToDisplay.map((key, index) => {
+            let use = key.images !== undefined && key.images[0] !== undefined ? key.images[0] : PLACEHOLDER;
             return (
               <IonCol size={col} key={index}>
-                <CatSubCatCardDisplay cat={key} route={`${props.route}${key}`} />
+                <CatSubCatCardDisplay cat={key.name} route={`${props.route}${key.name}`} img={use} />
               </IonCol>
             );
           })}
@@ -60,7 +63,7 @@ export default function GroupedCards(props: iProps) {
           props.arrToDisplay.map((prod, index) => {
             return (
               <IonCol size={col} key={index}>
-                <ProductCardDisplay key={index} product={prod} route={`${props.route}${prod.id}`} />
+                <ProductCardDisplay key={index} product={prod} route={props.routes ? `${props.routes[index]}${prod.id}` : `${props.route}${prod.id}`} />
               </IonCol>
             );
           })}

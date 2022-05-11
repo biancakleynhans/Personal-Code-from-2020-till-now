@@ -10,18 +10,18 @@ interface iProps {
 export default function CategoryBar(props: iProps) {
   return (
     <IonToolbar>
-      <IonButton color='light' fill='outline' onClick={() => props.layoutCb()} slot='start'>
+      <IonButton fill='outline' onClick={() => props.layoutCb()} slot='start'>
         <IonLabel>Layout {props.col}</IonLabel>
       </IonButton>
       <IonHeader>
-        <IonLabel style={{ fontSize: "25px" }} slot='end'>
-          {props.title}
+        <IonLabel color='primary' class='ion-text-wrap'>
+          {props.title.replace("%20", " ").toUpperCase()}
         </IonLabel>
       </IonHeader>
-      <IonButton color='light' fill='outline' slot='end'>
+      {/* <IonButton fill='outline' slot='end'>
         <IonIcon slot='start' icon={optionsOutline} />
         <IonLabel slot='end'>Sort/Filter</IonLabel>
-      </IonButton>
+      </IonButton> */}
     </IonToolbar>
   );
 }

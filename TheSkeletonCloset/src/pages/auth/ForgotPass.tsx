@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IonContent, IonInput, IonItem, IonLabel, IonList, IonPage, IonButton, IonLoading, IonListHeader } from "@ionic/react";
-import HeaderComponent from "../../components/headersFooters/HeaderComponent";
-import { useAuth } from "../../firebase/FirebaseAuthContext";
-import { AllRoutesObj } from "../../routes/AllRoutes";
-import FooterComponent from "../../components/headersFooters/FooterComponent";
+import { ForgotPassword } from "../../firebase/FirebaseAuth";
+import PageHeader from "../../components/headersFooters/PageHeader";
+import { RoutesObj } from "../../routes/Routes";
 
 export default function ForgotPass() {
-  const { forgotPassword } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [isSubmitting, setisSubmitting] = useState<boolean>(false);
   const [toastMsg, setToastMsg] = useState<string>("Connecting to server please wait...");
 
   function submit() {
-    forgotPassword(email)
+    ForgotPassword(email)
       .then((res) => {
         console.log("RES Suscess", res);
         setToastMsg("Email sent Sucesesfully, please check your");
@@ -28,8 +26,8 @@ export default function ForgotPass() {
 
   return (
     <IonPage>
-      <IonContent>
-        <HeaderComponent title={"Forgot"} />
+      <IonContent fullscreen>
+        <PageHeader header={"Forgot Password"} />
 
         <IonList>
           <IonListHeader>We'll send you an email to reset your password.</IonListHeader>
@@ -51,12 +49,12 @@ export default function ForgotPass() {
             <IonLabel style={{ fontSize: "25px", textAlign: "center", marging: "auto" }}>OR</IonLabel>
           </IonItem>
 
-          <IonButton routerLink={AllRoutesObj.auth.signUp.path} color='tertiary'>
-            {AllRoutesObj.auth.signUp.title}
+          <IonButton routerLink={RoutesObj.auth.signUp.path} color='tertiary'>
+            {RoutesObj.auth.signUp.name}
           </IonButton>
 
-          <IonButton routerLink={AllRoutesObj.auth.signIn.path} color='tertiary'>
-            {AllRoutesObj.auth.signIn.title}
+          <IonButton routerLink={RoutesObj.auth.signIn.path} color='tertiary'>
+            {RoutesObj.auth.signIn.name}
           </IonButton>
         </IonList>
 
@@ -71,7 +69,6 @@ export default function ForgotPass() {
           message={toastMsg}
           duration={25000}
         />
-        <FooterComponent />
       </IonContent>
     </IonPage>
   );
