@@ -1,7 +1,0 @@
-{
-  "name": "Ui19 Procesor",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
