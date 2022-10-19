@@ -1,0 +1,24 @@
+.lteCarouselFlexCenter {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-center;
+  align-items: flex-center;
+}
+
+.lteCarouselFlexEnd {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+@media only screen and (min-width: 1024px) {
+  .itemWidth {
+    width: auto !important;
+  }
+  /* .lteCarousel {
+      padding: 2rem 0;
+    } */
+}

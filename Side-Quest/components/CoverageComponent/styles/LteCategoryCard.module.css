@@ -1,0 +1,9 @@
+.cardMinWidthMOP {
+  min-width: 545px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .cardMinWidth {
+    min-width: 570px;
+  }
+}

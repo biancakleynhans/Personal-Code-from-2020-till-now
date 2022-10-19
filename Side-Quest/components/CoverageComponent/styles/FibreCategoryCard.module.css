@@ -1,0 +1,23 @@
+.cardMinWidth {
+  min-width: 570px;
+}
+.cardMinWidthMOP {
+  min-width: 545px;
+}
+
+.fontAwesomeCheveronRightAB {
+  margin-bottom: -0.15rem;
+}
+
+.ButtonAB {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1024px) {
+  .cardMinWidthAB:nth-child(even) {
+    padding-right: 2rem;
+  }
+  .ButtonAB {
+    font-size: 1.5rem;
+  }
+}

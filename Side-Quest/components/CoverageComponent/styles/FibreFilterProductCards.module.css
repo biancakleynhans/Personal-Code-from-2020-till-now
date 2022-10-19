@@ -1,0 +1,14 @@
+.halfWidth {
+  width: 750px;
+}
+.maxWidth {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  .maxWidth {
+    width: 1140px;
+    padding: 0 1rem;
+  }
+}

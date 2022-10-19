@@ -1,0 +1,35 @@
+.checkbox[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+.RangeSelectCheckBox {
+  min-width: 1rem;
+  min-height: 1rem;
+  margin-right: 0.5em;
+  border: 1px solid currentColor;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+[type='checkbox']:checked + label .RangeSelectCheckBox {
+  border-color: #05b9b5;
+  border-width: 5px;
+  background: white;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+@media only screen and (min-width: 1024px) {
+  .selectCards:nth-child(1) {
+    margin-right: 0.4rem;
+  }
+  .selectCards:nth-child(2) {
+    margin-left: 0.4rem;
+  }
+}
