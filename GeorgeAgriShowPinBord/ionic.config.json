@@ -1,7 +1,0 @@
-{
-  "name": "GeorgeAgriShowPinBord",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
