@@ -1,0 +1,37 @@
+/* Custom Fonts */
+
+/* LOBSTER */
+@font-face {
+  font-family: "LobsterBold";
+  src: url("../assets/fonts/lobster/LobsterTwo-Bold.ttf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "LobsterBoldItalic";
+  src: url("../assets/fonts/lobster/LobsterTwo-BoldItalic.ttf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "LobsterItalic";
+  src: url("../assets/fonts/lobster/LobsterTwo-Italic.ttf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("../assets/fonts/lobster/LobsterTwo-Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+html.ios,
+html.md {
+  --ion-default-font: "Lobster";
+  font-family: var(--ion-default-font) !important;
+}

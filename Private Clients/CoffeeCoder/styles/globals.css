@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global apllied css for tailwind */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    /* Apply following styles to all body tags */
+    /* @apply bg-slate-400; */ /* Background standard */
+    /* @apply bg-[#332a38]; */ /*Background custom color */
+    /* tracking-wide: Spreads out the text */
+    /* sm md lg -> media queries  */
+
+    @apply bg-[#332a38] text-[#b6b3b7] tracking-wide;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-bold;
+    }
+
+    h1 {
+      @apply text-4xl sm:text-5xl md:text-6xl;
+    }
+
+    h2 {
+      @apply text-3xl sm:text-4xl;
+    }
+
+    li {
+      @apply cursor-pointer;
+    }
+
+    button {
+      @apply shadow shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#290145] to-[#42022e] text-white;
+    }
+  }
+}
